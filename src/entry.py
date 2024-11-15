@@ -1,19 +1,20 @@
-
-import Detector, Image, Logger
+from detector import Detector
+from image import Image
 
 
 if __name__ == "__main__":
     detector = Detector() 
-    logger = Logger()
 
-    if(not detector.load()):
-        logger.info("Could not load engine.")
-    LoadImages()
-    TrainModel()
-    ExportModel()
-    LoadModel()
-    LoadInput()
-    PreProcess()
-    DetectObject()
-    PostProcess()
-    OutputPrediction()
+    if(not detector.loaded()):
+        detector.create_engine()
+
+    result = detector.predict(image)
+    # LoadImages()
+    # TrainModel()
+    # ExportModel()
+    # LoadModel()
+    # LoadInput()
+    # PreProcess()
+    # DetectObject()
+    # PostProcess()
+    # OutputPrediction()

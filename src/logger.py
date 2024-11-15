@@ -1,12 +1,13 @@
-class Logger:
-    Logger(self):
-        pass 
 
-    info(self, msg: str):
+class Logger:
+    def __init__(self):
+        pass
+
+    def info(self, msg: str) -> None:
         print("[INFO] ", msg)
 
-    warning(self, msg: str):
+    def warning(self, msg: str):
         print("[WARNING] ", msg)
 
-    error(self, msg: str):
+    def error(self, msg: str):
         print("[ERROR] ", msg)
