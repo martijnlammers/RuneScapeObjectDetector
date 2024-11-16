@@ -1,2 +1,7 @@
 class Image:
-    pass
+
+    name: str = "default"
+
+    def __init__(s):
+        pass 
+
