@@ -16,10 +16,10 @@ class Detector:
     
     def set_confidence(s, confidence: float) -> None:
         s.__confidence = confidence
-        s.__logger.info("Detection confidence set to " + str(s.__confidence))
+        s.__logger.info(f"Detection confidence set to {s.__confidence}")
 
-    def locate(s, screenshot: Image, target: Image) -> Tuple[int, int, int, int]:
-        s.__logger.info("Locating " + target.name + " on " + screenshot.name)
+    def locate(s, screenshot: Image, target: Image) -> Tuple[int, int, int, int] | None:
+        s.__logger.info(f"Locating {target.name} on {screenshot.name}")
 
         match = None
         result = cv2.matchTemplate(screenshot.data, target.data, cv2.TM_CCOEFF_NORMED) 
@@ -35,8 +35,8 @@ class Detector:
                 "height": target.data.shape[const.HEIGHT]
                 }
             
-            s.__logger.info("Target found with confidence: " + str(confidence))
-            s.__logger.info("Coordinates: " + str(match))
+            s.__logger.info(f"Target found with confidence: {confidence}")
+            s.__logger.info(f"Coordinates: {match}")
 
         else:
             s.__logger.info("No match")
