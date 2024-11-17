@@ -5,9 +5,10 @@ from config import Config
 if __name__ == "__main__":
 
     config = Config('detector_config.json')
-    detector = Detector() 
-    target = Image('res\\test.png')
+    screenshot = Image(config.screenshot_path)
+    target = Image(config.target_path)
 
+    detector = Detector() 
     detector.set_confidence(config.confidence)
-    result = detector.locate(target)
+    result = detector.locate(screenshot, target)
     print(result)

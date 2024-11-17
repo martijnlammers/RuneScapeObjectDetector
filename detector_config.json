@@ -1,4 +1,5 @@
 {
     "target_path": "res\\test.png",
-    "confidence": 0.9
+    "screenshot_path": "res\\screenshot.png",
+    "confidence": 0.8
 }

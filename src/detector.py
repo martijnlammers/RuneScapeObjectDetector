@@ -1,6 +1,6 @@
 # 3rd party
-import pyautogui as pg
-from pyautogui import ImageNotFoundException
+import cv2 
+import numpy as np 
 
 # internal
 from logger import Logger
@@ -18,13 +18,24 @@ class Detector:
         s.__confidence = confidence
         s.__logger.info("Detection confidence set to " + str(s.__confidence))
 
-    def locate(s, target: Image) -> Tuple[int, int, int, int]:
+    def locate(s, screenshot: Image, target: Image) -> Tuple[int, int, int, int]:
         s.__logger.info("Attempting to locate image " + target.name)
 
-        try:
-            result =  pg.locateOnScreen(target.path, confidence=s.__confidence)
-            s.__logger.info("Image found!")
+        match_result = cv2.matchTemplate(screenshot.data, target.data, cv2.TM_CCOEFF_NORMED) 
+
+        confidence = cv2.minMaxLoc(match_result)[1]
+        top_left = cv2.minMaxLoc(match_result)[3]
+
+        if(confidence >= s.__confidence):
+            s.__logger.info("Target found with confidence: " + str(confidence))
+            result = (top_left[0], top_left[1], target.data.shape[1], target.data.shape[0])
             return result
         
-        except ImageNotFoundException:
-            s.__logger.error("Image not found on screen.")
+        # if max_val >= 0.8:
+        #     top_left = max_loc 
+        #     bottom_right = (top_left[0] + target_width, top_left[1] + target_height) 
+        #     retval =  (top_left, bottom_right) 
+        #     print(retval)
+        # else:
+        return None
+   
