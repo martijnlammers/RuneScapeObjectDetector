@@ -23,7 +23,7 @@ class Detector:
         s.__logger.info(f"Detection confidence set to {s.__confidence}")
 
     def locate(s, screenshot: Image, target: Image, debug: bool = False) -> Rectangle:
-        s.__logger.info("Locating " + target.name + " on " + screenshot.name)
+        s.__logger.info(f"Locating {target.name} on {screenshot.name}")
 
         rectangle = None
         result = cv2.matchTemplate(screenshot.data, target.data, cv2.TM_CCOEFF_NORMED)
