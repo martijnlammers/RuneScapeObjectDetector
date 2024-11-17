@@ -23,6 +23,8 @@ the repository.
 |---|---|---|
 | `target_path` | string | Valid relative or absolute path to .png. This image will be attempted to be located. | 
 | `confidence` | float | Value between 0.1 and 1. Lower means it will be less strict with finding exact pixels, but this also results in worse accuracy. | 
+| `frame_path` | string | Valid relative or absolute path to .png. This image will be attempted to be located. | 
+| `confidence` | float | Value between 0.1 and 1. Lower means it will be less strict with finding exact pixels, but this also results in worse accuracy. | 
 
 
 ## Conventions 

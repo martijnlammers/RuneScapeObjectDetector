@@ -22,11 +22,11 @@ class Detector:
         self.__confidence = confidence
         self.__logger.info(f"Detection confidence set to {self.__confidence}")
 
-    def locate(self, screenshot: Image, target: Image, debug: bool = False) -> Rectangle:
-        self.__logger.info(f"Locating {target.name} on {screenshot.name}")
+    def locate(self, frame: Image, target: Image, debug: bool = False) -> Rectangle:
+        self.__logger.info(f"Locating {target.name} on {frame.name}")
 
         rectangle = None
-        result = cv2.matchTemplate(screenshot.data, target.data, cv2.TM_CCOEFF_NORMED)
+        result = cv2.matchTemplate(frame.data, target.data, cv2.TM_CCOEFF_NORMED)
         confidence = cv2.minMaxLoc(result)[const.CONFIDENCE_INDEX]
 
         if (confidence >= self.__confidence):
@@ -43,7 +43,7 @@ class Detector:
             self.__logger.info(f"Target found with confidence: {confidence}")
 
             if (self.__debug):
-                show_detection(screenshot, rectangle)
+                show_detection(frame, rectangle)
 
         else:
             self.__logger.info("No match")

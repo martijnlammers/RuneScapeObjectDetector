@@ -5,9 +5,9 @@ from config import Config
 if __name__ == "__main__":
 
     config = Config('detector_config.json')
-    screenshot = Image(config.screenshot_path)
+    frame = Image(config.frame_path)
     target = Image(config.target_path)
 
     detector = Detector(config.debug)
     detector.set_confidence(config.confidence)
-    result = detector.locate(screenshot, target)
+    result = detector.locate(frame, target)
