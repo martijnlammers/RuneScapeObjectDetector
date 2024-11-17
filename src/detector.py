@@ -17,12 +17,7 @@ class Detector:
         s.__logger.info("Attempting to locate image: " + target.name)
 
         try:
-            result = None
-
-            while True:
-                result = pg.locateOnScreen(target.path, confidence=0.5)
-                if(result is not None):
-                    return result
-
+            return pg.locateOnScreen(target.path, confidence=0.5)
+        
         except ImageNotFoundException:
             s.__logger.error("Image not found on screen.")
