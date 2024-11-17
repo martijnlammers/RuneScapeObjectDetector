@@ -21,7 +21,7 @@ class Detector:
 
     def set_confidence(s, confidence: float) -> None:
         s.__confidence = confidence
-        s.__logger.info("Detection confidence set to " + str(s.__confidence))
+        s.__logger.info(f"Detection confidence set to {s.__confidence}")
 
     def locate(s, screenshot: Image, target: Image, debug: bool = False) -> dict[int, int, int, int]:
         s.__logger.info("Locating " + target.name + " on " + screenshot.name)
@@ -40,8 +40,8 @@ class Detector:
                 "height": target.data.shape[const.HEIGHT_INDEX]
                 }
 
-            s.__logger.info("Target found with confidence: " + str(confidence))
-            s.__logger.info("Coordinates: " + str(match))
+            s.__logger.info(f"Target found with confidence: {confidence}")
+            s.__logger.info(f"Coordinates: {match}")
 
             if (s.__debug):
                 s.__show_detection(screenshot, match)
