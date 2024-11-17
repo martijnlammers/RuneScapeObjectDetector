@@ -56,7 +56,7 @@ class Detector:
         y = match['top']
         w = match['width']
         h = match['height']
-        cv2.rectangle(screenshot.data, (x, y), (x + w, y + h), const.RGB_RED, 3)
+        cv2.rectangle(screenshot.data, (x, y), (x + w, y + h), const.RGB_RED, 2)
 
         draw_point = (x, y - 10)
         font = cv2.FONT_HERSHEY_PLAIN
