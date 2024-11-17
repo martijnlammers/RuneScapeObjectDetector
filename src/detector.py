@@ -7,7 +7,7 @@ from logger import Logger
 from image import Image
 
 # standard library
-from typing import dict
+from typing import Dict, Tuple
 
 
 class Detector:
@@ -23,7 +23,7 @@ class Detector:
         s.__confidence = confidence
         s.__logger.info(f"Detection confidence set to {s.__confidence}")
 
-    def locate(s, screenshot: Image, target: Image, debug: bool = False) -> dict[int, int, int, int]:
+    def locate(s, screenshot: Image, target: Image, debug: bool = False) -> Dict[str, int]:
         s.__logger.info("Locating " + target.name + " on " + screenshot.name)
 
         match = None
@@ -64,7 +64,7 @@ class Detector:
         cv2.putText(screenshot.data, 'Detection', draw_point, font, font_scale, const.RGB_RED)
         cv2.imshow("Detection Verification", screenshot.data)
         cv2.waitKey()
-    
+
     def locate_center(s, screenshot: Image, target: Image) -> Tuple[int, int] | None:
         """
         This method returns the center coordinates of located match rectangle.
@@ -78,4 +78,3 @@ class Detector:
         assert min_y <= max_y
 
         return (min_x + max_x) // 2, (min_y + max_y) // 2
-
