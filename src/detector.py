@@ -16,10 +16,10 @@ class Detector:
 
     def set_confidence(s, confidence: float) -> None:
         s.__confidence = confidence
-        s.__logger.info("Confidence set to " + str(s.__confidence))
+        s.__logger.info("Detection confidence set to " + str(s.__confidence))
 
     def locate(s, target: Image) -> Tuple[int, int, int, int]:
-        s.__logger.info("Attempting to locate image: " + target.name)
+        s.__logger.info("Attempting to locate image " + target.name)
 
         try:
             result =  pg.locateOnScreen(target.path, confidence=s.__confidence)

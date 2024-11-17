@@ -7,4 +7,5 @@ class Config:
     def __init__(s, path:str):
         with open(path, 'r') as config_file:
             json_data = json.load(config_file)
-            target_path = json_data['target_path']
+            s.target_path = json_data['target_path']
+            s.confidence = json_data['confidence']

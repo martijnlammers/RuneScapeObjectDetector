@@ -4,7 +4,7 @@
 * PyAutoGUI 0.9.54
 
 
-## How to use: 
+## Target Capture: 
 Before making a screenshot in RuneScape we need to standardize the camera view to effectively
 locate targets.
 
@@ -16,5 +16,10 @@ locate targets.
 
 
 ## Configurations
-Set configurations in config.json
+To configure the app, change values in `detector_config.json` in the root of 
+the repository.
 
+| Name | Description |
+|---|---|
+| `target_path`| Valid relative or absolute path to .png. This image will be attempted to be located. | 
+| `confidence`| Value between 0.1 and 1. Lower means it will be less strict with finding exact pixels, but this also results in worse accuracy. | 
