@@ -1,40 +1,28 @@
 # 3rd party
-from super_gradients.training import models
-import torch
+import pyautogui as pg
+from pyautogui import ImageNotFoundException
 
 # internal
 from logger import Logger
 from image import Image
 
+# standard
+from typing import Tuple
+
 class Detector:
 
     __logger: Logger = Logger()
-    __device: str
-    __model_architecture: str
-    __model: any
 
-    def __init__(s):
-        s.__device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        s.__model_architecture = 'yolo_nas_l'
-        s.__model = models.get(s.__model_architecture, pretrained_weights="coco").to(s.__device)
-        s.__model.eval()
+    def locate(s, target: Image) -> Tuple[int, int, int, int]:
+        s.__logger.info("Attempting to locate image: " + target.name)
 
+        try:
+            result = None
 
-    # def __load_configuration(s) -> bool:
-    #     s.__logger.info("Loading configurations.")
-    #     return False
-    
-    # def __load_annotations(s) -> bool:
-    #     data_dir = "../datasets/cheetah"
+            while True:
+                result = pg.locateOnScreen(target.path, confidence=0.5)
+                if(result is not None):
+                    return result
 
-    # def __train(s) -> bool:
-    #     s.__logger.info("Training model for object detection.")
-    #     s.__load_annotations()
-
-    
-    # def __evaluate(s) -> None:
-    #     s.__logger.info("Evaluating model to verify training.")
-
-    def infer(s, image: Image) -> None:
-        s.__logger.info("Performing inference on image: " + image.name)
-        
+        except ImageNotFoundException:
+            s.__logger.error("Image not found on screen.")

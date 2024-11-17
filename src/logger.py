@@ -4,10 +4,10 @@ class Logger:
         pass
 
     def info(s, msg: str) -> None:
-        print("[INFO] ", msg)
+        print("[I]", msg)
 
     def warning(s, msg: str):
-        print("[WARNING] ", msg)
+        print("[W]", msg)
 
     def error(s, msg: str):
-        print("[ERROR] ", msg)
+        print("[E]", msg)
