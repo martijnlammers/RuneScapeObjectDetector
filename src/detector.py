@@ -1,24 +1,28 @@
 # 3rd party
 import pyautogui as pg
-import cv2
 from pyautogui import ImageNotFoundException
 
 # internal
 from logger import Logger
 from image import Image
 
-# standard
+# standard library
 from typing import Tuple
 
 class Detector:
 
     __logger: Logger = Logger()
+    __confidence: float = 0.9
+
+    def set_confidence(s, confidence: float) -> None:
+        s.__confidence = confidence
+        s.__logger.info("Confidence set to " + str(s.__confidence))
 
     def locate(s, target: Image) -> Tuple[int, int, int, int]:
         s.__logger.info("Attempting to locate image: " + target.name)
 
         try:
-            result =  pg.locateOnScreen(target.path, confidence=0.7)
+            result =  pg.locateOnScreen(target.path, confidence=s.__confidence)
             s.__logger.info("Image found!")
             return result
         
