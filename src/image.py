@@ -1,4 +1,5 @@
-import cv2 
+import cv2
+
 
 class Image:
 
@@ -9,4 +10,4 @@ class Image:
     def __init__(s, path: str = 'None'):
         s.name = path.split('\\')[-1]
         s.path = path
-        s.data = cv2.imread(path, cv2.IMREAD_GRAYSCALE) 
+        s.data = cv2.imread(path, cv2.IMREAD_COLOR)

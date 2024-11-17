@@ -8,6 +8,6 @@ if __name__ == "__main__":
     screenshot = Image(config.screenshot_path)
     target = Image(config.target_path)
 
-    detector = Detector()
+    detector = Detector(config.debug)
     detector.set_confidence(config.confidence)
     result = detector.locate(screenshot, target)
