@@ -3,15 +3,13 @@ import cv2
 
 # internal
 import constants as const
-from logger import Logger
+from logging import info
 from image import Image
 from rectangle import Rectangle
 from debug_functions import show_detection
 
 
 class Detector:
-
-    __logger: Logger = Logger()
     __confidence: float = const.DEFAULT_CONFIDENCE
     __debug: bool
 
@@ -20,10 +18,10 @@ class Detector:
 
     def set_confidence(self, confidence: float) -> None:
         self.__confidence = confidence
-        self.__logger.info(f"Detection confidence set to {self.__confidence}")
+        info(f"Detection confidence set to {self.__confidence}")
 
     def locate(self, frame: Image, target: Image, debug: bool = False) -> Rectangle:
-        self.__logger.info(f"Locating {target.name} on {frame.name}")
+        info(f"Locating {target.name} on {frame.name}")
 
         rectangle = None
         result = cv2.matchTemplate(frame.data, target.data, cv2.TM_CCOEFF_NORMED)
@@ -40,12 +38,12 @@ class Detector:
                 target.data.shape[const.HEIGHT_INDEX]
             )
 
-            self.__logger.info(f"Target found with confidence: {confidence}")
+            info(f"Target found with confidence: {confidence}")
 
             if (self.__debug):
                 show_detection(frame, rectangle)
 
         else:
-            self.__logger.info("No match")
+            info("No match")
 
         return rectangle
