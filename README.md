@@ -23,8 +23,7 @@ the repository.
 |---|---|---|
 | `frame_path` | string | Path to .png used as searching grounds. | 
 | `target_path` | string | Path to target .png. | 
-| `confidence` | float | Value between 0.1 and 1. Lower means it will be less strict with finding exact pixels, but this also results in worse accuracy. | 
-
+| `confidence` | float | Value between 0.1 and 1. Lower means it will be less strict with finding exact pixels, but this also results in worse accuracy. |
 | `debug` | boolean | Used to enable debug functionalities of the app. | 
 
 
