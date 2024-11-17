@@ -64,3 +64,18 @@ class Detector:
         cv2.putText(screenshot.data, 'Detection', draw_point, font, font_scale, const.RGB_RED)
         cv2.imshow("Detection Verification", screenshot.data)
         cv2.waitKey()
+    
+    def locate_center(s, screenshot: Image, target: Image) -> Tuple[int, int] | None:
+        """
+        This method returns the center coordinates of located match rectangle.
+        """
+        locate_result = s.locate(screenshot, target)
+        if locate_result is None:
+            return None
+
+        min_x, min_y, max_x, max_y = locate_result
+        assert min_x <= max_x
+        assert min_y <= max_y
+
+        return (min_x + max_x) // 2, (min_y + max_y) // 2
+
