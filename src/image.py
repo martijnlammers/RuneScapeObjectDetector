@@ -7,7 +7,7 @@ class Image:
     path: str = "default"
     data: cv2.typing.MatLike
 
-    def __init__(s, path: str = 'None'):
-        s.name = path.split('\\')[-1]
-        s.path = path
-        s.data = cv2.imread(path, cv2.IMREAD_COLOR)
+    def __init__(self, path: str = 'None'):
+        self.name = path.split('\\')[-1]
+        self.path = path
+        self.data = cv2.imread(path, cv2.IMREAD_COLOR)

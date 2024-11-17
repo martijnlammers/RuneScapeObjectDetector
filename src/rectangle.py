@@ -24,18 +24,19 @@ class Rectangle:
         return (self.min_x + self.max_x) // 2, (self.min_y + self.max_y) // 2
 
     def top_left(self) -> tuple[int, int]:
+
         """
         Top left corner coordinates of rectangle.
         (X , Y)
         """
-        return self.min_x, self.min_y
+        return (self.min_x, self.min_y)
 
     def bottom_right(self) -> tuple[int, int]:
         """
         Bottom right corner coordinates of rectangle.
         (X , Y)
         """
-        return self.max_x, self.max_y
+        return (self.max_x, self.max_y)
 
     def random_within(self) -> tuple[int, int]:
         """
@@ -44,4 +45,7 @@ class Rectangle:
         """
         x_offset = randbelow(self.width)
         y_offset = randbelow(self.height)
-        return self.min_x + x_offset, self.min_y + randbelow(y_offset)
+        return (self.min_x + x_offset, self.min_y + randbelow(y_offset))
+
+    def bottom_right(self) -> tuple[int, int]:
+        return (self.max_x, self.max_y)

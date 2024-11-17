@@ -1,6 +1,6 @@
 {
     "target_path": "res\\test.png",
-    "screenshot_path": "res\\screenshot.png",
+    "frame_path": "res\\screenshot.png",
     "confidence": 0.8,
     "debug": true
 }
