@@ -1,7 +1,7 @@
 ## Environment: 
 * Microsoft Windows 11 Version 24H2 (OS Build 26100.2033)
 * Python 3.9.13 (64-bits)
-* PyAutoGUI 0.9.54
+* OpenCV 4.10.0.84
 
 
 ## Target Capture: 
